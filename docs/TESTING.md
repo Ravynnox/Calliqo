@@ -1,6 +1,14 @@
 # Testing
 
 ## Current status
+TECH-002 verification: two backend tests pass, warning-free build, clean
+NuGet audits, manual health outage/recovery, and named-volume durability.
+See PERSISTENCE_TESTS.md and PERSISTENCE_SETUP.md. Checkpoint commit is pending.
+
+TECH-001 checkpoint c06c03d is committed and published. All baseline checks
+below passed. Class WeatherForecastTests remains saved in UnitTest1.cs;
+renaming the file is optional cleanup, not a functional test issue.
+
 TECH-001 (#5): owner installed the frontend harness and added the test/config.
 First run failed with Invalid Chai property: toBeInTheDocument because
 src/test/setup.ts was empty. Owner saved the setup contents and subsequently

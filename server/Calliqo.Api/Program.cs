@@ -1,8 +1,23 @@
+using Calliqo.Api.Infrastructure.Persistence;
+using Calliqo.Api.Infrastructure.Observability;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+builder.Services.AddDbContext<CalliqoDbContext>(options =>
+    options.UseNpgsql(
+        builder.Configuration.GetConnectionString("Calliqo")
+        ?? throw new InvalidOperationException(
+            "Connection string 'Calliqo' is not configured.")));
+builder.Services.AddHealthChecks()
+    .AddCheck<DatabaseReadinessHealthCheck>(
+        "database",
+        tags: ["ready"],
+        timeout: TimeSpan.FromSeconds(5));
 
 var app = builder.Build();
 
@@ -32,6 +47,17 @@ app.MapGet("/weatherforecast", () =>
     return forecast;
 })
 .WithName("GetWeatherForecast");
+
+//Observability Health Checks //
+app.MapHealthChecks("/health/live", new HealthCheckOptions
+{
+    Predicate = _ => false
+});
+
+app.MapHealthChecks("/health/ready", new HealthCheckOptions
+{
+    Predicate = check => check.Tags.Contains("ready")
+});
 
 app.Run();
 
