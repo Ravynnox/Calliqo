@@ -304,3 +304,128 @@ no vulnerable packages using api.nuget.org. The audit is limited to known
 advisories from the current sources. The owner subsequently confirmed
 OpenAPI and weatherforecast both respond after restarting with the updated
 dependency. Baseline test setup and version pinning remain outstanding.
+
+## TECH-001 — Version requirements walkthrough
+Status: proposed owner edits; none of the configuration below has been
+applied or verified. Prerequisites: scaffold checks passed, Node 26.13.0,
+npm 11.20.0, .NET SDK 10.0.201. FND-004 is complete.
+
+Create global.json at the repository root (JSON; uses .NET SDK resolver):
+
+```json
+{
+  "sdk": {
+    "version": "10.0.201",
+    "rollForward": "latestPatch",
+    "allowPrerelease": false
+  }
+}
+```
+
+This selects the latest installed stable 10.0.2xx SDK patch at or above
+10.0.201, not another feature band or major. It allows patch maintenance
+while keeping the feature band consistent. It does not install an SDK.
+
+Create .node-version at the repository root (plain text):
+
+```text
+26.13.0
+```
+
+This records the expected Node version for developers and compatible
+version managers; it does not switch Node automatically in PowerShell.
+
+From the repository root, update client/package.json using npm:
+
+```powershell
+Set-Location client
+npm pkg set 'engines.node=>=26.13.0 <27' 'engines.npm=>=11.20.0 <12' 'packageManager=npm@11.20.0'
+npm install --package-lock-only
+npm ci
+npm run build
+npm run lint
+Set-Location ..
+dotnet --version
+dotnet build Calliqo.slnx
+```
+
+The npm command records supported major ranges and the npm baseline.
+engines is advisory by default; packageManager is metadata and does not
+automatically install npm. Retain package-lock.json; npm ci reproduces its
+dependency versions. The lock-only step synchronizes manifest metadata
+before the clean dependency install. Check resulting file diffs.
+Expected: selected .NET SDK matches global.json, npm install/ci succeeds,
+frontend build/lint and backend build pass. Share errors before proceeding.
+No baseline tests are added by this step; TECH-001 stays open.
+
+References:
+- https://learn.microsoft.com/en-us/dotnet/core/tools/global-json
+- https://docs.npmjs.com/cli/v11/configuring-npm/package-json/#engines
+
+### Version requirements verification and npm audit follow-up
+Owner completed the walkthrough. Direct inspection confirms global.json,
+.node-version, and client engines/packageManager metadata. Owner-provided
+output confirms npm ci, frontend build/lint, dotnet --version (10.0.201),
+and solution build passed.
+
+Full read-only npm audit reports 12 moderate affected-package findings
+rooted in minimatch 10.2.6 through ESLint 10.14.0 and typescript-eslint
+8.72.1. Advisory GHSA-g3hv-75wg-m249 identifies versions below 11.0.1
+as affected. Read-only npm audit --omit=dev reports zero known findings.
+Do not equate a production-only clean report with a clean full toolchain.
+No npm audit fix, dependency override, downgrade, or upgrade was applied.
+Review compatible fixes before choosing remediation or explicit deferral.
+Reference: https://github.com/advisories/GHSA-g3hv-75wg-m249
+
+The agent's default npm audit request failed certificate verification;
+using Node --use-system-ca for that process allowed verified TLS requests.
+No persistent trust settings or execution policies were changed.
+Version/scaffold changes remain uncommitted. Baseline frontend and backend
+tests have subsequently passed; see TESTING.md for the current evidence.
+
+### Minimatch override trial — applied and locally verified
+Registry review found latest eslint 10.14.0 depends on minimatch ^10.2.6,
+@eslint/config-array 0.23.5 on ^10.2.4, and
+@typescript-eslint/typescript-estree 8.72.1 on ^10.2.2.
+No normal latest-version update resolves the current advisory.
+minimatch 11.0.1 supports the installed Node version, but the 11.x release
+changes matching internals and removes APIs. An override crosses declared
+major ranges; local validation is required and does not establish upstream support.
+
+Proposed owner commands from client/ modify client/package.json and its lockfile:
+
+```powershell
+npm pkg set 'overrides.eslint.minimatch=11.0.1' 'overrides.@eslint/config-array.minimatch=11.0.1' 'overrides.@typescript-eslint/typescript-estree.minimatch=11.0.1'
+npm install
+npm ci
+npm ls minimatch
+npm audit
+npm run build
+npm run lint
+npx eslint src/App.tsx src/main.tsx vite.config.ts --max-warnings 0
+```
+
+Expected: three consumers resolve patched 11.0.1; full audit, build, and
+lint checks pass without ignored-file warnings. Check rule execution using
+a temporary stdin input rather than creating a repository file:
+
+```powershell
+'const unusedProbe = 1;' | npx eslint --stdin --stdin-filename src/lint-probe.ts --max-warnings 0
+```
+
+This final probe is expected to fail with an unused-variable error. That
+failure confirms matching/rule execution for the virtual TypeScript file.
+If the real lint checks fail or the probe unexpectedly succeeds, stop and
+report the output. Do not claim remediation is verified from audit alone.
+If the trial fails, remove only the three proposed override entries and
+reinstall; do not discard the owner's other package or lockfile changes.
+When upstream consumers support the patched major, review removing these
+temporary overrides. No package files have been changed by Codex.
+
+Verification results: owner applied the three overrides; direct manifest
+inspection confirms them. Owner output shows npm install/ci and full audit
+report zero findings, all consumers resolve 11.0.1, build/lint pass, and
+explicit source/config lint checks pass. Agent ran the stdin-only probe:
+expected exit 1 with @typescript-eslint/no-unused-vars. No source file was
+created. These checks validate the current workflow, not all upstream API
+compatibility. Review the override when lint dependencies/configuration change.

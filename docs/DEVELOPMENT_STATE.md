@@ -7,11 +7,11 @@ Maintain documentation automatically. The owner controls code and Git
 actions; non-documentation changes require explicit authorization.
 
 ## Current work
-- Phase: 0 — Project Foundation
-- Milestone: GitHub Issues and Project workflow
-- Task: FND-004 — GitHub work tracking
+- Phase: 1 — Technical Foundation (Phase 0 second-computer check pending)
+- Milestone: Initial application scaffolds
+- Task: TECH-001 — Application scaffolds: checkpoint review and commit
 - Status: In progress
-- Last completed task: FND-002 — Establish repository memory
+- Last completed task: FND-004 — GitHub work tracking
 - Last update: 2026-11-01
 
 ## Approved direction
@@ -99,10 +99,39 @@ actions; non-documentation changes require explicit authorization.
   #1–#24 and linked dependencies. TECH-001 is issue #5; FND-004 is issue #4.
 - Created private Calliqo Development Project #2 and linked Ravynnox/Calliqo:
   https://github.com/users/Ravynnox/projects/2/views/2
-- Verified all 24 memberships/statuses: 2 Done, 3 In Progress, 19 Backlog.
-  Closed completed historical issues #1/#2; 22 issues remain open.
-- Workflow board layout exists, but saved grouping is unset. Owner must
-  select Group by → Status and save in the browser; API cannot set grouping.
+- Verified all 24 memberships. Closed FND-004 after verifying d01167c
+  publication and Status column grouping; now 3 Done, 2 In Progress, 19 Backlog.
+- Workflow BOARD_LAYOUT column grouping is reported by verticalGroupByFields,
+  which contains Status; checking groupByFields alone was insufficient.
+- Owner added global.json (.NET SDK 10.0.201, latestPatch, no prereleases),
+  .node-version (26.13.0), and client Node/npm engines and packageManager metadata.
+  Direct inspection confirms all settings match the walkthrough.
+- Owner output confirms npm ci, frontend build/lint, SDK selection
+  (10.0.201), and backend solution build passed after version requirements.
+- npm ci reported 12 moderate findings. A direct read-only audit confirms
+  one root advisory GHSA-g3hv-75wg-m249 in minimatch 10.2.6, propagated
+  through ESLint/typescript-eslint development dependencies. Audit excluding
+  dev dependencies reported zero known findings. This pre-remediation
+  full audit was not clean; subsequent recovery results are below.
+- Audit used Node --use-system-ca after certificate verification failed
+  with the default trust store in the agent process. No trust/npm settings
+  were changed persistently and TLS verification was not disabled.
+- Do not run npm audit fix --force: its proposed downgrades are not a
+  verified compatible remedy. Dependency review remains before TECH-001 completion.
+- Registry review confirms current eslint 10.14.0, @eslint/config-array
+  0.23.5, and @typescript-eslint/typescript-estree 8.72.1 all request
+  minimatch 10.x. A normal latest-version upgrade does not resolve this finding.
+- Upstream minimatch 11 changes matching internals and removes APIs.
+  Owner applied scoped overrides to 11.0.1 for those three consumers.
+- Owner output confirms npm install and npm ci succeed with zero audit
+  findings; npm ls minimatch resolves 11.0.1, full npm audit is clean,
+  and build, lint, and explicit source/config lint checks pass.
+- Agent ran the stdin-only unused-variable probe: ESLint exited 1 with
+  @typescript-eslint/no-unused-vars at the virtual src/lint-probe.ts path,
+  as expected. No repository file was created by this probe.
+- Direct package.json inspection confirms all three scoped overrides.
+  Local workflow validation is complete; upstream compatibility is not
+  guaranteed across future lint configurations. See docs/DECISIONS.md.
 
 ## Files created
 - AGENTS.md
@@ -135,8 +164,13 @@ Weatherforecast response is verified by owner screenshot.
 Backend solution build and dependency remediation passed according to
 owner output and project inspection; current NuGet audit is clean.
 Weatherforecast and OpenAPI document responses after the update passed
-according to owner confirmation. Automated tests and second-computer
-setup remain unverified.
+according to owner confirmation. Owner confirmed frontend test/build/lint/audit
+pass. Owner supplied backend results: one test passed (zero failed/skipped),
+solution build passed, and both API/test projects have no vulnerable packages
+reported from api.nuget.org. Second-computer setup remains unverified.
+Direct inspection confirms the real integration test is saved in UnitTest1.cs
+with class WeatherForecastTests; rename the file to match the class before
+the checkpoint for consistency. Generated test/build artifacts are ignored.
 
 All five initial documents were read back after creation and reviewed
 for scope, task status, architecture, and cloud/observability requirements.
@@ -148,7 +182,7 @@ server/Calliqo.Api/bin/example.dll, and .env.
 
 ## Repository status
 - Git is initialized on main.
-- Last verified commit: 26d797b — docs: establish two-computer setup workflow.
+- Last verified commit: d01167c — FND-004: establish GitHub work tracking (#4).
 - Origin: https://github.com/Ravynnox/Calliqo.git.
 - Local main, origin/main, and live GitHub main matched at verification.
 - The working tree was clean before this documentation update.
@@ -157,12 +191,18 @@ server/Calliqo.Api/bin/example.dll, and .env.
 - Retrieval and environment verification on the second computer remain pending.
 - The frontend scaffold and lockfile are untracked and have not been committed.
 - The backend scaffold and Calliqo.slnx are also untracked.
-- Tracking documentation and issue drafts are local and uncommitted.
+- Tracking documentation and issue snapshots are published in d01167c.
+- Workflow board Status column grouping verified through verticalGroupByFields.
+- This completion/state update is local; include it with the next checkpoint.
 
 ## Work remaining
-- Owner selects Group by → Status and saves the Workflow board view.
-- Owner reviews, commits, and pushes tracking documentation.
-- Add baseline checks and version requirements before completing TECH-001.
+- Owner confirmed frontend tests pass after saving the matcher setup;
+  direct inspection confirms the setup import and cleanup are now present.
+- Owner confirmed frontend build/lint/audit after adding test dependencies pass.
+- Owner renames tests/Calliqo.IntegrationTests/UnitTest1.cs to
+  WeatherForecastTests.cs for consistency, then reviews the checkpoint.
+- Owner stages, commits, and pushes TECH-001 code/configuration and docs
+  referencing issue #5. Verify publication before completing/closing the task.
 - Follow docs/SETUP.md on the second computer and report commit/tool results.
 - Add remaining foundation reference documents.
 
@@ -172,10 +212,14 @@ tool; telemetry hosting and storage; initial football rules;
 supported browser/device matrix.
 
 ## Next recommended action
-Open Project #2 Workflow view, select Group by → Status, and save the view.
-Review/commit/push tracking documentation referencing issue #4.
-Complete FND-004 before resuming version pinning
-and baseline tests for TECH-001. No baseline test projects have been added or run.
+FND-004 is complete: d01167c is published and Workflow columns are grouped by Status.
+Version requirements, scoped minimatch override checks, and frontend test pass.
+The initial matcher-registration failure was resolved by saving setup.ts.
+Owner confirmed frontend build/lint/audit with added test dependencies pass.
+Backend integration test, solution build, and audit now pass per owner output.
+Review the scaffold/version/test files with their documentation and create
+the TECH-001 checkpoint commit referencing #5. Verify remote publication
+before marking the task complete. No code or Git mutations were made by Codex.
 Second-computer verification is explicitly pending at the owner's request.
 Include current documentation updates in the next reviewed checkpoint commit.
 Create application directories as their implementation tasks begin.

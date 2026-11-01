@@ -8,7 +8,7 @@ Complete requires verified acceptance criteria and committed documentation.
 | FND-001 Foundation review | None | Approve MVP and architectural direction | Complete | [#1](https://github.com/Ravynnox/Calliqo/issues/1) |
 | FND-002 Repository memory | FND-001 | Approved instructions and state documents committed | Complete | [#2](https://github.com/Ravynnox/Calliqo/issues/2) |
 | FND-003 Two-computer setup | FND-002 | Document tools; both computers retrieve matching commit | In progress | [#3](https://github.com/Ravynnox/Calliqo/issues/3) |
-| FND-004 GitHub work tracking | FND-002 | Publish roadmap issues, configure Project board, link issue IDs, document commit/PR workflow, and verify | In progress | [#4](https://github.com/Ravynnox/Calliqo/issues/4) |
+| FND-004 GitHub work tracking | FND-002 | Publish roadmap issues, configure Project board, link issue IDs, document commit/PR workflow, and verify | Complete | [#4](https://github.com/Ravynnox/Calliqo/issues/4) |
 | TECH-001 Application scaffolds | FND-003 (second-computer verification pending; local setup proceeding) | Frontend/backend build and baseline checks pass | In progress | [#5](https://github.com/Ravynnox/Calliqo/issues/5) |
 | TECH-002 API/database connection | TECH-001 | Compose startup, migrations, health and persistence verified | Planned | [#6](https://github.com/Ravynnox/Calliqo/issues/6) |
 | TECH-003 API conventions and CI | TECH-002 | Versioned API, OpenAPI, errors, validation and CI checks | Planned | [#7](https://github.com/Ravynnox/Calliqo/issues/7) |
@@ -43,6 +43,6 @@ See [work tracking](WORK_TRACKING.md) for the issue/body snapshot index,
 publication procedure, Project statuses, and commit/PR conventions.
 All 24 roadmap tasks have published GitHub issues linked above.
 Project: [Calliqo Development](https://github.com/users/Ravynnox/projects/2).
-All memberships/statuses are verified: 2 Done, 3 In Progress, 19 Backlog.
-Owner must save board grouping by Status and commit/push tracking documentation.
-TECH-001 remains unfinished while tracking setup is active.
+Tracking documentation is published in d01167c. Workflow board columns are
+verified as grouped by Status (verticalGroupByFields). FND-004 is complete;
+TECH-001 resumes for version pinning and baseline tests.

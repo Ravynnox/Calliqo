@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/server/">
+    <Project Path="server/Calliqo.Api/Calliqo.Api.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Calliqo.IntegrationTests/Calliqo.IntegrationTests.csproj" />
+  </Folder>
+</Solution>

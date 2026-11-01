@@ -1,0 +1,6 @@
+@Calliqo.Api_HostAddress = http://localhost:5033
+
+GET {{Calliqo.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

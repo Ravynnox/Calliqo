@@ -8,13 +8,13 @@
 - Workflow board created with Backlog, Ready, In Progress, and Done statuses.
 - Published 24 real GitHub issues after confirming no existing repository issues.
 - Local body snapshots live under docs/work-items/; task/issue mapping is below.
-- Dependency links and all 24 memberships/statuses are verified: 2 Done,
-  3 In Progress, 19 Backlog. Issues #1/#2 are closed; 22 remain open.
-- Board layout exists, but its saved grouping is unset. Owner must select
-  Group by → Status on the Workflow view and save the view in the browser;
-  GitHub's exposed Project API has no grouping update input.
+- All 24 memberships are verified. FND-004 is now closed/Done, giving
+  3 Done, 2 In Progress, and 19 Backlog items; 21 issues remain open.
+- Workflow BOARD_LAYOUT and Status column grouping were verified through
+  verticalGroupByFields. groupByFields alone does not report board columns.
 - GitHub connector/plugin discovery were unavailable; authenticated GitHub CLI is the verified fallback.
-- Tracking documentation is not yet committed or pushed by the owner.
+- Tracking documentation is committed and published in d01167c.
+- Current completion updates are local; include them in the next checkpoint.
 
 ## Responsibilities
 The owner controls source/configuration changes, branches, staging, commits,
@@ -43,10 +43,9 @@ Use a Board view grouped by Status:
 - In Progress: active work or unfinished work with a clear pending note.
 - Done: acceptance criteria met, evidence recorded, and required code/docs committed.
 
-Initially place FND-001 and FND-002 in Done after verifying their evidence.
-FND-004 is active. FND-003 remains In Progress with second-computer verification
-pending. TECH-001 remains In Progress but waits for FND-004; version pinning
-and baseline tests are unfinished. All other tasks start in Backlog.
+FND-001, FND-002, and FND-004 are Done. FND-003 remains In Progress with
+second-computer verification pending. TECH-001 is active for version pinning
+and baseline tests. All other tasks remain in Backlog.
 Use a note in the issue body for waiting work; no additional custom field is
 required initially.
 
@@ -142,7 +141,7 @@ need not be rewritten into a new self-referential commit after each commit.
 | FND-001 | [Foundation review](work-items/FND-001.md) | Complete | [#1](https://github.com/Ravynnox/Calliqo/issues/1) |
 | FND-002 | [Repository memory](work-items/FND-002.md) | Complete | [#2](https://github.com/Ravynnox/Calliqo/issues/2) |
 | FND-003 | [Two-computer setup](work-items/FND-003.md) | In progress | [#3](https://github.com/Ravynnox/Calliqo/issues/3) |
-| FND-004 | [GitHub work tracking](work-items/FND-004.md) | In progress | [#4](https://github.com/Ravynnox/Calliqo/issues/4) |
+| FND-004 | [GitHub work tracking](work-items/FND-004.md) | Complete | [#4](https://github.com/Ravynnox/Calliqo/issues/4) |
 | TECH-001 | [Application scaffolds](work-items/TECH-001.md) | In progress | [#5](https://github.com/Ravynnox/Calliqo/issues/5) |
 | TECH-002 | [API/database connection](work-items/TECH-002.md) | Planned | [#6](https://github.com/Ravynnox/Calliqo/issues/6) |
 | TECH-003 | [API conventions and CI](work-items/TECH-003.md) | Planned | [#7](https://github.com/Ravynnox/Calliqo/issues/7) |
@@ -166,13 +165,8 @@ need not be rewritten into a new self-referential commit after each commit.
 
 ## Acceptance and remaining work
 CLI setup, workflow documentation, issue creation, and Project creation are complete.
-Project membership/status verification passed. Owner browser grouping and
-documentation review/commit/push remain pending. FND-004 stays open.
-
-Open https://github.com/users/Ravynnox/projects/2/views/2 and choose
-Group by → Status from the view configuration, then save the view.
-Expected columns: Backlog, Ready, In Progress, Done. Ready is initially empty.
-Confirm the grouping before closing FND-004.
+Project membership/status verification, saved Status column grouping, and
+documentation publication passed. FND-004 is closed and Done. Resume TECH-001.
 
 ## Official references
 - [GitHub CLI installation](https://github.com/cli/cli#installation)
