@@ -36,6 +36,7 @@ actions; non-documentation changes require explicit authorization.
   and local environment configuration.
 - Owner authorized automatic documentation creation and updates.
 - AGENTS.md and README.md updated to reflect the revised working rules.
+- Owner created the initial foundation commit, verified as 4b9bb9f.
 
 ## Files created
 - AGENTS.md
@@ -46,8 +47,6 @@ actions; non-documentation changes require explicit authorization.
 - .gitignore (created by the owner)
 
 ## Documentation modified in this step
-- AGENTS.md
-- README.md
 - docs/DEVELOPMENT_STATE.md
 
 ## Verification
@@ -61,19 +60,25 @@ setup have not been verified.
 All five initial documents were read back after creation and reviewed
 for scope, task status, architecture, and cloud/observability requirements.
 The root .gitignore and five initial documents are present.
-Git status confirms main has no commits and all six files are untracked.
+Git history confirms the six foundation files were committed on main.
+The working tree was clean before this development-state update.
 Ignore checks passed for client/node_modules/example.js,
 server/Calliqo.Api/bin/example.dll, and .env.
 
 ## Repository status
 - Git is initialized on main.
-- No files are staged or committed.
+- Last verified commit: 4b9bb9f — FND-002: establish project founcdational docs.
+- The foundation files are committed locally.
+- This development-state update is not yet committed.
 - No remote is configured.
-- All six project files exist locally only.
+- Owner-provided target remote: https://github.com/Ravynnox/Calliqo.git.
+  Remote existence, access, and contents have not yet been verified.
+- No push has been performed or verified.
 - Cross-computer synchronization has not been established.
 
 ## Work remaining
-- Review, commit, and push approved documentation.
+- Owner reviews and commits this development-state update to finalize FND-002.
+- Configure the intended GitHub remote and push the committed documentation.
 - Verify retrieval on the second computer.
 - Add remaining foundation reference documents.
 
@@ -83,9 +88,9 @@ tool; telemetry hosting and storage; initial football rules;
 supported browser/device matrix.
 
 ## Next recommended action
-Owner reviews and creates the initial documentation commit.
-Then configure the intended GitHub remote, push, and verify retrieval
-on the second computer.
+Owner reviews and commits this state update, configures the remote,
+checks for existing remote branches, and pushes if the histories permit.
+Verify remote synchronization before second-computer setup.
 Create application directories as their implementation tasks begin.
 
 ## Completion rule
