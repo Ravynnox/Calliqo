@@ -100,6 +100,14 @@ acceptance criteria, documentation changes, and Git guidance.
 - Do not store secrets in Git.
 
 ## Documentation
+For GitHub task tracking, read docs/WORK_TRACKING.md and the active issue.
+Keep stable roadmap IDs and record actual GitHub issue numbers/URLs.
+Reference issues in owner-created commits and PRs. Use closing keywords
+only when acceptance criteria are satisfied; partial scaffolds do not
+complete TECH-001. Verify remote tracking changes before claiming success.
+Issue/Project mutations require user authorization; automatic documentation
+permission alone does not authorize writes to external services.
+
 The repository is the durable source of project context.
 DEVELOPMENT_STATE.md records current facts.
 ROADMAP.md records tasks, dependencies, and acceptance criteria.

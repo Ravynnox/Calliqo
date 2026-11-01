@@ -15,6 +15,7 @@ Foundation planning. No application has been implemented or tested.
 - Current state: docs/DEVELOPMENT_STATE.md
 - Development plan: docs/ROADMAP.md
 - Architecture: docs/ARCHITECTURE.md
+- GitHub work tracking: docs/WORK_TRACKING.md
 
 Development is guided. Documentation is maintained automatically; the
 owner controls code changes and Git actions. Non-documentation changes
