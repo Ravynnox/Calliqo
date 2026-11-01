@@ -8,10 +8,10 @@ actions; non-documentation changes require explicit authorization.
 
 ## Current work
 - Phase: 0 — Project Foundation
-- Milestone: Repository instructions and development memory
-- Task: FND-002 — Establish repository memory
+- Milestone: Two-computer continuity
+- Task: FND-003 — Two-computer setup
 - Status: In progress
-- Last completed task: FND-001 — Foundation review approved
+- Last completed task: FND-002 — Establish repository memory
 - Last update: 2026-11-01
 
 ## Approved direction
@@ -37,6 +37,11 @@ actions; non-documentation changes require explicit authorization.
 - Owner authorized automatic documentation creation and updates.
 - AGENTS.md and README.md updated to reflect the revised working rules.
 - Owner created the initial foundation commit, verified as 4b9bb9f.
+- Owner committed the handoff update as 3a5d1e5 and configured origin.
+- Live read-only GitHub verification confirmed remote main matches local
+  commit 3a5d1e58c394a04fd516c86c8c6aa72e460b3e11.
+- Initial FND-002 documents are committed and published.
+- Added docs/SETUP.md with the second-computer verification procedure.
 
 ## Files created
 - AGENTS.md
@@ -48,6 +53,8 @@ actions; non-documentation changes require explicit authorization.
 
 ## Documentation modified in this step
 - docs/DEVELOPMENT_STATE.md
+- docs/ROADMAP.md
+- docs/SETUP.md (new)
 
 ## Verification
 Observed versions:
@@ -67,19 +74,16 @@ server/Calliqo.Api/bin/example.dll, and .env.
 
 ## Repository status
 - Git is initialized on main.
-- Last verified commit: 4b9bb9f — FND-002: establish project founcdational docs.
-- The foundation files are committed locally.
-- This development-state update is not yet committed.
-- No remote is configured.
-- Owner-provided target remote: https://github.com/Ravynnox/Calliqo.git.
-  Remote existence, access, and contents have not yet been verified.
-- No push has been performed or verified.
-- Cross-computer synchronization has not been established.
+- Last verified commit: 3a5d1e5 — docs: record foundation progress and target remote.
+- Origin: https://github.com/Ravynnox/Calliqo.git.
+- Local main, origin/main, and live GitHub main matched at verification.
+- The working tree was clean before this documentation update.
+- This setup guide and status/roadmap update are not yet committed or pushed.
+- Retrieval and environment verification on the second computer remain pending.
 
 ## Work remaining
-- Owner reviews and commits this development-state update to finalize FND-002.
-- Configure the intended GitHub remote and push the committed documentation.
-- Verify retrieval on the second computer.
+- Owner reviews, commits, and pushes the FND-003 guide and status update.
+- Follow docs/SETUP.md on the second computer and report commit/tool results.
 - Add remaining foundation reference documents.
 
 ## Open decisions
@@ -88,11 +92,12 @@ tool; telemetry hosting and storage; initial football rules;
 supported browser/device matrix.
 
 ## Next recommended action
-Owner reviews and commits this state update, configures the remote,
-checks for existing remote branches, and pushes if the histories permit.
-Verify remote synchronization before second-computer setup.
+Owner commits and pushes the three documentation files listed above.
+Retrieve that resulting commit on the second computer and follow docs/SETUP.md.
 Create application directories as their implementation tasks begin.
 
 ## Completion rule
-FND-002 remains in progress until its acceptance criteria are verified.
+FND-002 foundation artifacts are committed and published.
+FND-003 remains in progress until both-computer verification is complete.
+The current milestone is not finalized until its documentation is committed.
 Update this record to reflect actual file and Git changes before handoff.

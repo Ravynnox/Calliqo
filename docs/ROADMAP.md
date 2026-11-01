@@ -6,8 +6,8 @@ Complete requires verified acceptance criteria and committed documentation.
 | Task | Dependency | Deliverable / acceptance | Status |
 |---|---|---|---|
 | FND-001 Foundation review | None | Approve MVP and architectural direction | Complete |
-| FND-002 Repository memory | FND-001 | Approved instructions and state documents committed | In progress |
-| FND-003 Two-computer setup | FND-002 | Document tools; both computers retrieve matching commit | Planned |
+| FND-002 Repository memory | FND-001 | Approved instructions and state documents committed | Complete |
+| FND-003 Two-computer setup | FND-002 | Document tools; both computers retrieve matching commit | In progress |
 | TECH-001 Application scaffolds | FND-003 | Frontend/backend build and baseline checks pass | Planned |
 | TECH-002 API/database connection | TECH-001 | Compose startup, migrations, health and persistence verified | Planned |
 | TECH-003 API conventions and CI | TECH-002 | Versioned API, OpenAPI, errors, validation and CI checks | Planned |
@@ -29,8 +29,9 @@ Complete requires verified acceptance criteria and committed documentation.
 | INFRA-002 Production/recovery | INFRA-001 | Production IaC, deployment, migrations and restore verification | Planned |
 | REL-001 MVP verification | GAME-003, OBS-002, INFRA-002 | End-to-end, isolation, device and operational criteria pass | Planned |
 
-FND-001 approval is recorded here; the foundation milestone remains
-unfinished until the associated documentation is committed.
+FND-002 evidence: foundation commit 4b9bb9f and handoff commit 3a5d1e5.
+Live GitHub main matched local main at 3a5d1e5 on 2026-11-01.
+FND-003 verification and its documentation commit remain outstanding.
 
 Later phases: image import, scouting, recommendations, and commercial
 enhancements. Detailed scope requires approval before implementation.
