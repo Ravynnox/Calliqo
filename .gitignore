@@ -1,0 +1,39 @@
+# Frontend dependencies and build output
+node_modules/
+dist/
+coverage/
+
+# .NET build and test output
+[Bb]in/
+[Oo]bj/
+TestResults/
+*.trx
+
+# Local IDE files
+.vs/
+*.user
+*.suo
+
+# Local environment configuration
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# Local logs
+*.log
+
+# Browser test artifacts
+playwright-report/
+test-results/
+blob-report/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Terraform local artifacts, if selected later
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
