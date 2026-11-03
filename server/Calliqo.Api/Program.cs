@@ -8,6 +8,14 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+builder.Services.AddProblemDetails(options =>
+{
+    options.CustomizeProblemDetails = context =>
+    {
+        context.ProblemDetails.Extensions["traceId"] =
+            context.HttpContext.TraceIdentifier;
+    };
+});
 builder.Services.AddDbContext<CalliqoDbContext>(options =>
     options.UseNpgsql(
         builder.Configuration.GetConnectionString("Calliqo")
@@ -20,6 +28,8 @@ builder.Services.AddHealthChecks()
         timeout: TimeSpan.FromSeconds(5));
 
 var app = builder.Build();
+app.UseExceptionHandler();
+app.UseStatusCodePages();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -34,7 +44,10 @@ var summaries = new[]
     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
 };
 
-app.MapGet("/weatherforecast", () =>
+var api = app.MapGroup("/api/v1")
+    .WithGroupName("v1");
+
+api.MapGet("/weatherforecast", () =>
 {
     var forecast =  Enumerable.Range(1, 5).Select(index =>
         new WeatherForecast
@@ -46,7 +59,7 @@ app.MapGet("/weatherforecast", () =>
         .ToArray();
     return forecast;
 })
-.WithName("GetWeatherForecast");
+.WithName("GetWeatherForecastV1");
 
 //Observability Health Checks //
 app.MapHealthChecks("/health/live", new HealthCheckOptions

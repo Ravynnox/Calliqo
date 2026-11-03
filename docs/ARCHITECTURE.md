@@ -4,7 +4,7 @@
 Approved foundation direction. React/Vite and .NET API scaffolds with
 baseline frontend and backend tests are implemented in checkpoint c06c03d.
 Local PostgreSQL/EF persistence and API health checks are implemented and
-verified under TECH-002, awaiting its checkpoint commit. Football modules
+verified and published under TECH-002 at checkpoint 05e1abd. Football modules
 and authentication remain planned.
 Specific provider and library choices remain open where noted.
 

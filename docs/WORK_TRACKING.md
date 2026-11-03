@@ -9,7 +9,7 @@
 - Published 24 real GitHub issues after confirming no existing repository issues.
 - Local body snapshots live under docs/work-items/; task/issue mapping is below.
 - All 24 memberships are verified. FND-004 is now closed/Done, giving
-  4 Done, 2 In Progress, and 18 Backlog items after starting TECH-002; 20 issues remain open.
+  5 Done, 2 In Progress, and 17 Backlog items after starting TECH-003; 19 issues remain open.
 - Workflow BOARD_LAYOUT and Status column grouping were verified through
   verticalGroupByFields. groupByFields alone does not report board columns.
 - GitHub connector/plugin discovery were unavailable; authenticated GitHub CLI is the verified fallback.
@@ -43,9 +43,9 @@ Use a Board view grouped by Status:
 - In Progress: active work or unfinished work with a clear pending note.
 - Done: acceptance criteria met, evidence recorded, and required code/docs committed.
 
-FND-001, FND-002, FND-004, and TECH-001 are Done. FND-003 remains In Progress
-with second-computer verification pending. Owner approved TECH-002, which
-is now In Progress. The other 18 future tasks remain in Backlog.
+FND-001, FND-002, FND-004, TECH-001, and TECH-002 are Done. FND-003 remains
+In Progress with second-computer verification pending. TECH-003 is current;
+the other 17 future tasks remain in Backlog.
 Use a note in the issue body for waiting work; no additional custom field is
 required initially.
 
@@ -143,8 +143,8 @@ need not be rewritten into a new self-referential commit after each commit.
 | FND-003 | [Two-computer setup](work-items/FND-003.md) | In progress | [#3](https://github.com/Ravynnox/Calliqo/issues/3) |
 | FND-004 | [GitHub work tracking](work-items/FND-004.md) | Complete | [#4](https://github.com/Ravynnox/Calliqo/issues/4) |
 | TECH-001 | [Application scaffolds](work-items/TECH-001.md) | Complete | [#5](https://github.com/Ravynnox/Calliqo/issues/5) |
-| TECH-002 | [API/database connection](work-items/TECH-002.md) | In progress | [#6](https://github.com/Ravynnox/Calliqo/issues/6) |
-| TECH-003 | [API conventions and CI](work-items/TECH-003.md) | Planned | [#7](https://github.com/Ravynnox/Calliqo/issues/7) |
+| TECH-002 | [API/database connection](work-items/TECH-002.md) | Complete | [#6](https://github.com/Ravynnox/Calliqo/issues/6) |
+| TECH-003 | [API conventions and CI](work-items/TECH-003.md) | In progress | [#7](https://github.com/Ravynnox/Calliqo/issues/7) |
 | OBS-001 | [Baseline telemetry](work-items/OBS-001.md) | Planned | [#8](https://github.com/Ravynnox/Calliqo/issues/8) |
 | AUTH-001 | [Identity decision](work-items/AUTH-001.md) | Planned | [#9](https://github.com/Ravynnox/Calliqo/issues/9) |
 | AUTH-002 | [Sign-in and teams](work-items/AUTH-002.md) | Planned | [#10](https://github.com/Ravynnox/Calliqo/issues/10) |
@@ -167,7 +167,7 @@ need not be rewritten into a new self-referential commit after each commit.
 CLI setup, workflow documentation, issue creation, and Project creation are complete.
 Project membership/status verification, saved Status column grouping, and
 documentation publication passed. FND-004 is closed and Done. TECH-001 is
-also complete at published checkpoint c06c03d. Next proposed task: TECH-002 (#6).
+also complete at published checkpoint c06c03d. TECH-002 is complete at published checkpoint 05e1abd. TECH-003 (#7) is current.
 
 ## Official references
 - [GitHub CLI installation](https://github.com/cli/cli#installation)

@@ -22,7 +22,7 @@ public class WeatherForecastTests : IClassFixture<WebApplicationFactory<Program>
             BaseAddress = new Uri("https://localhost"),
             AllowAutoRedirect = false
         });
-        using var response = await client.GetAsync("/weatherforecast");
+        using var response = await client.GetAsync("/api/v1/weatherforecast");
 
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         Assert.Equal("application/json", response.Content.Headers.ContentType?.MediaType);

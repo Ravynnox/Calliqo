@@ -16,9 +16,10 @@ Planned. See docs/WORK_TRACKING.md for the issue mapping and latest evidence.
 - [ ] Organizations, memberships, explicit permissions, and team ownership are enforced.
 - [ ] Initial subscription entitlements assume authorized teams are subscribed without payment integration.
 - [ ] Critical authentication and authorization paths are tested.
+- [ ] First real sign-in/team request endpoint validates input: valid requests succeed; malformed/invalid fields return 400 Problem Details with field-specific errors and traceId; contract tests cover both outcomes (transferred from TECH-003 #7 on 2026-11-02).
 
 ## Evidence and remaining work
-Planned only. No implementation or verification is claimed.
+Planned only. No implementation or verification is claimed. Request-validation demonstration was transferred from TECH-003 (#7) on 2026-11-02; the weather exercise is cancelled. If endpoint sequencing changes, explicitly transfer this criterion to the first real write endpoint before closing AUTH-002.
 
 ## Project placement
 Backlog. Move to Ready only after dependencies and owner task approval.

@@ -8,11 +8,11 @@ and Git mutations. Never read or display local credentials unnecessarily.
 
 ## Current work
 - Phase: 1 — Technical Foundation
-- Milestone: API/database connection
-- Task: TECH-002 — API/database connection, issue #6
-- Status: Implementation verified; awaiting owner checkpoint commit/push
-- Last completed task: TECH-001 — Application scaffolds, issue #5
-- Last update: 2026-11-01
+- Milestone: API conventions and CI
+- Task: TECH-003 — API conventions and CI, issue #7
+- Status: In progress — root workflow placement/content verified; publication and CI pending
+- Last completed task: TECH-002 — API/database connection, issue #6
+- Last update: 2026-11-02
 
 ## Work completed
 - TECH-001 scaffold/version/baseline-test checkpoint is published as c06c03d.
@@ -50,7 +50,7 @@ and Git mutations. Never read or display local credentials unnecessarily.
 - Second-computer verification is deferred under FND-003 (#3).
 - Durability checks are not backup/restore or production readiness verification.
 
-## Files in the TECH-002 checkpoint
+## Files in the published TECH-002 checkpoint
 - compose.yaml; .env.example; dotnet-tools.json.
 - server/Calliqo.Api/Calliqo.Api.csproj and Program.cs.
 - server/Calliqo.Api/Infrastructure/Persistence/: context, probe, migration,
@@ -63,19 +63,30 @@ and Git mutations. Never read or display local credentials unnecessarily.
 
 ## Repository status
 - Branch: main; origin: https://github.com/Ravynnox/Calliqo.git.
-- Last verified published checkpoint: c06c03d7076f9982d5cfaa4917dd1e925041d360.
-- TECH-002 source/configuration/tests and current documentation are uncommitted.
+- Last verified published checkpoint: 05e1abddcadf360209a0dbbd508d6aff1ca2c1a6.
+- TECH-002 source/configuration/tests and associated documentation are published.
+- Working tree was clean before the current completion/walkthrough doc updates.
+- Current documentation updates are local; include them in the next checkpoint.
 - Previous TECH-001 completion-note updates are included in this checkpoint.
-- Issue #6 remains open/In Progress pending owner review, commit, and push.
+- Issue #6 completion is verified; close it and move its card to Done.
+- TECH-003 (#7) is current; Problem Details, versioned routing, and OpenAPI
+  contract tests are implemented locally by the owner.
 - Test class WeatherForecastTests remains in UnitTest1.cs; filename cleanup is optional.
 
 ## Work remaining
-- Owner reviews/stages the intended files, verifies no credentials are staged,
-  commits with a reference to #6, and pushes.
-- Verify the actual published commit before completing issue #6.
-- Obtain approval for TECH-003 — API conventions and CI (#7).
-- Complete second-computer checks when available; no seamless handoff claim yet.
-
+- Owner reports all tests passed after correcting both forecast caller URLs.
+  Versioned route/OpenAPI checkpoint is passing per owner report. No new
+  test execution was performed by Codex.
+- Weather-validation walkthrough is superseded by owner agreement. No days-query
+  implementation or 16-test target remains. Real request validation is tracked
+  under AUTH-002 (#10), including field errors, traceId, and contract tests.
+- Owner corrected workflow location to .github/workflows/ci.yml, confirmed by
+  Test-Path and file enumeration. It is the only ci.yml found. Content matches
+  the prepared frontend/backend workflow. Source diffs and new tests reviewed.
+  Git diff --check passes; line-ending notices remain informational.
+- Workflow is untracked; owner publication and remote CI verification remain pending.
+- Keep health endpoints operational and diagnostics free of secrets.
+- Complete second-computer checks when available under FND-003.
 ## Known follow-ups and outstanding decisions
 - PersistenceProbe is a technical verification table, not a football feature.
   Remove it through a migration before MVP release once real module tests
@@ -87,14 +98,20 @@ and Git mutations. Never read or display local credentials unnecessarily.
 - Grafana, OpenTelemetry, cloud IaC, backups/restore, and CI remain planned.
 
 ## Next recommended action
-Review and commit the TECH-002 checkpoint using the documented Git steps.
-After verifying publication, close #6 and move its Project card to Done.
-Then present TECH-003 and await owner approval before starting it.
-Do not rerun passed checks without changes or a new unresolved concern.
-Do not create a separate status-only commit after every observation; include
-completion notes with the next meaningful owner-reviewed checkpoint.
+Owner reviews/stages the intended API, tests, root workflow, and documentation,
+checks the staged diff, then commits/pushes a TECH-003 checkpoint referencing #7.
+After publication inspect CI jobs for the intended commit. Keep #7 open pending
+both successful jobs and documentation publication. No code/configuration/Git
+mutations or CI executions were performed by Codex.
 
 ## Completion rule
 A task is not finalized until associated implementation and documentation
 are committed. Cross-computer continuity additionally requires push/retrieval
 verification. Planned or untested work must never be presented as complete.
+
+## Tracking reconciliation — 2026-11-02
+Inspected all 24 GitHub issues: no standalone weather-demo issue exists.
+Updated issue #7 to cancel that exercise and retain CI/publication work;
+updated #10 with real-endpoint validation acceptance criteria. Read-back
+verified both remote issue bodies match their local snapshots; both remain
+open. No issue closure was warranted. No code or Git mutations performed.

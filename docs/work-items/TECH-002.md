@@ -6,7 +6,7 @@ GitHub issue: [#6](https://github.com/Ravynnox/Calliqo/issues/6)
 Connect the API to PostgreSQL with reproducible local container setup.
 
 ## Roadmap status
-In progress. Owner approved guided setup; see docs/DATABASE_SETUP.md.
+Complete. Verified published checkpoint 05e1abd.
 
 ## Dependencies
 [TECH-001 (#5)](https://github.com/Ravynnox/Calliqo/issues/5)
@@ -38,10 +38,12 @@ the migration and EF write/read through separate contexts. Owner confirms
 the same local marker row survives Compose container recreation retaining
 the named volume. Setup/troubleshooting docs cover the verified workflow.
 No public probe endpoint or football-domain tables were introduced.
-Only owner checkpoint review, commit, push, and publication verification remain.
+Owner committed and pushed checkpoint 05e1abddcadf360209a0dbbd508d6aff1ca2c1a6.
+Live GitHub main matches local main; working tree was clean at verification.
+All acceptance criteria and publication are verified.
 
 ## Project placement
-In Progress. Implementation verified; awaiting owner checkpoint commit/push.
+Done. TECH-002 checkpoint is verified complete and published.
 
 ## Repository context
 - [Roadmap](https://github.com/Ravynnox/Calliqo/blob/main/docs/ROADMAP.md)
