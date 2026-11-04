@@ -1,6 +1,7 @@
 using Calliqo.Api.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
+using Npgsql;
 
 namespace Calliqo.Api.Infrastructure.Observability;
 
@@ -17,9 +18,18 @@ public sealed class DatabaseReadinessHealthCheck : IHealthCheck
         HealthCheckContext context,
         CancellationToken cancellationToken = default)
     {
-        var connected = await _database.Database.CanConnectAsync(cancellationToken);
-        return connected
-            ? HealthCheckResult.Healthy()
-            : HealthCheckResult.Unhealthy("Database unavailable.");
+        try
+        {
+            await _database.Database.ExecuteSqlRawAsync(
+                "SELECT 1",
+                cancellationToken);
+
+            return HealthCheckResult.Healthy();
+        }
+        catch (Exception exception)
+            when (exception is NpgsqlException or TimeoutException)
+        {
+            return HealthCheckResult.Unhealthy("Database unavailable.");
+        }
     }
 }

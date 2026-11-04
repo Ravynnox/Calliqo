@@ -1,5 +1,11 @@
 # Development Setup
 
+> Current status, reviewed 2026-11-02: first-computer setup, application scaffolds,
+> tool pins, and baseline tests are implemented. TECH-001 is published in c06c03d.
+> Do not rerun project generation, dependency recovery, or pin creation merely
+> because the historical walkthroughs below contain imperative instructions.
+> FND-003 second-computer verification is intentionally deferred and still pending.
+
 ## Status
 Foundation stage only. No application projects or services exist yet.
 Commands below are instructions for the owner, not actions performed by Codex.

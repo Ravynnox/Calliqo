@@ -1,3 +1,7 @@
+using System.Net;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.Testing;
+using Microsoft.Extensions.Configuration;
 using Calliqo.Api.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Testcontainers.PostgreSql;
@@ -45,6 +49,37 @@ public sealed class PersistenceTests : IAsyncLifetime
         Assert.Equal(createdAt, saved.CreatedAtUtc);
     }
 
+    [Fact]
+    public async Task Readiness_ReturnsHealthyWithAvailableDatabase()
+    {
+        using var factory = new WebApplicationFactory<Program>();
+
+        using var application = factory.WithWebHostBuilder(builder =>
+            builder.ConfigureAppConfiguration((_, configuration) =>
+            {
+                configuration.AddInMemoryCollection(
+                    new Dictionary<string, string?>
+                    {
+                        ["ConnectionStrings:Calliqo"] =
+                            _postgres.GetConnectionString(),
+                        ["Observability:Enabled"] = "false"
+                    });
+            }));
+
+        using var client = application.CreateClient(
+            new WebApplicationFactoryClientOptions
+            {
+                BaseAddress = new Uri("https://localhost"),
+                AllowAutoRedirect = false
+            });
+
+        using var response = await client.GetAsync("/health/ready");
+
+        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        Assert.Equal(
+            "Healthy",
+            await response.Content.ReadAsStringAsync());
+    }
     private CalliqoDbContext CreateContext()
     {
         var options = new DbContextOptionsBuilder<CalliqoDbContext>()

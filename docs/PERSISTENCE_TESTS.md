@@ -1,5 +1,10 @@
 # PostgreSQL Persistence Test — TECH-002
 
+> Current status, reviewed 2026-11-02: this test is implemented and published in
+> 05e1abd. The latest published CI in a77b651 passed four backend tests, including
+> this persistence test. The separate Compose durability check also passed.
+> Earlier two-test counts and pending notes below are historical.
+
 ## Status and prerequisites
 Owner implemented and ran the test; no test package/source changes by Codex.
 Owner output confirms two passing tests, warning-free build, and clean

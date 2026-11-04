@@ -1,5 +1,7 @@
 # API Contracts — TECH-003
 
+> Review 2026-11-02: TECH-003 is complete in published a77b651 with successful CI. Error handling, /api/v1 routing, and OpenAPI test are implemented. Earlier checkpoint failure/pending notes below are historical. Weather validation is cancelled; real validation belongs to AUTH-002. OBS-001 telemetry wiring is a separate pending task.
+
 ## Status
 Error responses and versioned routing/OpenAPI checkpoints passed per owner.
 The owner confirmed tests pass after correcting both forecast caller URLs.

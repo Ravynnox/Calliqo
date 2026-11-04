@@ -1,5 +1,12 @@
 # Local Database Setup — TECH-002
 
+> Current status, reviewed 2026-11-02: TECH-002 is complete and published in
+> 05e1abd. DbContext, credentials, health checks, migrations, persistence tests,
+> and named-volume durability were verified. Walkthrough/troubleshooting text
+> below is historical reference, not outstanding instructions. Do not recreate
+> the database, reset credentials, or overwrite .env/compose.yaml from old snippets.
+> Current Compose also includes the locally verified LGTM service under OBS-001.
+
 Latest checkpoint: owner confirmed the intentional database-stop test:
 liveness 200, readiness 503, readiness 200 after recovery. Follow
 [migrations and persistence](PERSISTENCE_SETUP.md) next. Earlier troubleshooting

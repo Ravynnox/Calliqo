@@ -2,8 +2,11 @@ using Calliqo.Api.Infrastructure.Persistence;
 using Calliqo.Api.Infrastructure.Observability;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.AddCalliqoObservability();
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
@@ -13,7 +16,8 @@ builder.Services.AddProblemDetails(options =>
     options.CustomizeProblemDetails = context =>
     {
         context.ProblemDetails.Extensions["traceId"] =
-            context.HttpContext.TraceIdentifier;
+            Activity.Current?.TraceId.ToString()
+            ?? context.HttpContext.TraceIdentifier;
     };
 });
 builder.Services.AddDbContext<CalliqoDbContext>(options =>
@@ -28,6 +32,7 @@ builder.Services.AddHealthChecks()
         timeout: TimeSpan.FromSeconds(5));
 
 var app = builder.Build();
+app.UseCalliqoRequestLogging();
 app.UseExceptionHandler();
 app.UseStatusCodePages();
 
@@ -49,7 +54,7 @@ var api = app.MapGroup("/api/v1")
 
 api.MapGet("/weatherforecast", () =>
 {
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
+    var forecast = Enumerable.Range(1, 5).Select(index =>
         new WeatherForecast
         (
             DateOnly.FromDateTime(DateTime.Now.AddDays(index)),

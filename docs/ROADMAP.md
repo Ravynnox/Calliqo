@@ -11,8 +11,8 @@ Complete requires verified acceptance criteria and committed documentation.
 | FND-004 GitHub work tracking | FND-002 | Publish roadmap issues, configure Project board, link issue IDs, document commit/PR workflow, and verify | Complete | [#4](https://github.com/Ravynnox/Calliqo/issues/4) |
 | TECH-001 Application scaffolds | FND-003 (second-computer verification pending; local setup proceeding) | Frontend/backend build and baseline checks pass | Complete | [#5](https://github.com/Ravynnox/Calliqo/issues/5) |
 | TECH-002 API/database connection | TECH-001 | Compose startup, migrations, health and persistence verified | Complete | [#6](https://github.com/Ravynnox/Calliqo/issues/6) |
-| TECH-003 API conventions and CI | TECH-002 | Versioned API, OpenAPI, errors and CI checks; request-validation demonstration transferred to AUTH-002 | In progress | [#7](https://github.com/Ravynnox/Calliqo/issues/7) |
-| OBS-001 Baseline telemetry | TECH-003 | Correlated request logs, metrics and traces verified | Planned | [#8](https://github.com/Ravynnox/Calliqo/issues/8) |
+| TECH-003 API conventions and CI | TECH-002 | Versioned API, OpenAPI, errors and CI checks; request-validation demonstration transferred to AUTH-002 | Complete | [#7](https://github.com/Ravynnox/Calliqo/issues/7) |
+| OBS-001 Baseline telemetry | TECH-003 | Correlated request logs, metrics and traces verified | In progress | [#8](https://github.com/Ravynnox/Calliqo/issues/8) |
 | AUTH-001 Identity decision | FND-001 | Accepted identity ADR | Planned | [#9](https://github.com/Ravynnox/Calliqo/issues/9) |
 | AUTH-002 Sign-in and teams | AUTH-001, TECH-003 | Memberships, permissions and initial entitlements work; real request validation and error contracts tested | Planned | [#10](https://github.com/Ravynnox/Calliqo/issues/10) |
 | AUTH-003 Team isolation | AUTH-002 | Unauthorized reads, writes and relationships rejected | Planned | [#11](https://github.com/Ravynnox/Calliqo/issues/11) |
@@ -48,3 +48,13 @@ verified as grouped by Status (verticalGroupByFields). FND-004 is complete;
 TECH-001 is complete at published checkpoint c06c03d; baseline checks passed.
 TECH-002 (#6) is complete at published checkpoint 05e1abd. TECH-003 (#7)
 begins with API error conventions; owner controls code and CI changes.
+
+TECH-003 completion evidence: published a77b651b655bc3301e8b77549b3c77ec179efe42
+and [successful CI run](https://github.com/Ravynnox/Calliqo/actions/runs/41551585014).
+Both jobs passed; one frontend test and four backend tests passed. Request
+validation remains explicitly tracked under AUTH-002. OBS-001 is the next
+proposed task and requires owner approval.
+
+Owner approved OBS-001 on 2026-11-02. First checkpoint is local LGTM startup
+from docs/OBSERVABILITY_SETUP.md; instrumentation/export verification remains
+pending. No implementation is claimed by the prepared walkthrough.

@@ -1,5 +1,10 @@
 # Migrations and Persistence — TECH-002
 
+> Current status, reviewed 2026-11-02: completed in published TECH-002 checkpoint
+> 05e1abd, including migration, isolated write/read, and volume durability.
+> Instructions and earlier pending notes below are historical; no migration,
+> schema reset, or durability rerun is required to catch up.
+
 ## Latest checkpoint
 Owner confirms the exact marker row survives Compose down/up without volume
 deletion. Alongside applied/listed migration, passing EF persistence test,

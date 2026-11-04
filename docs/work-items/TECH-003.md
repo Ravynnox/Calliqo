@@ -6,7 +6,7 @@ GitHub issue: [#7](https://github.com/Ravynnox/Calliqo/issues/7)
 Establish consistent API contracts and automated build checks.
 
 ## Roadmap status
-In progress. Foundation implementation is local; CI and publication remain.
+Complete. Implementation and documentation published in a77b651; CI passed.
 
 ## Dependencies
 [TECH-002 (#6)](https://github.com/Ravynnox/Calliqo/issues/6)
@@ -14,9 +14,9 @@ In progress. Foundation implementation is local; CI and publication remain.
 ## Acceptance criteria
 - [x] Versioned API conventions and OpenAPI contracts are documented locally.
 - [x] Standardized error responses are demonstrated by the unknown-route test.
-- [ ] GitHub Actions runs required build, lint, and applicable tests.
-- [ ] No secrets are committed or exposed in CI output.
-- [ ] Owner publishes implementation and associated documentation.
+- [x] GitHub Actions runs required build, lint, and applicable tests.
+- [x] Workflow uses no application secrets; no application secret values were observed in reviewed changes or CI evidence.
+- [x] Owner publishes implementation and associated documentation.
 
 ## Scope decision — 2026-11-02
 The proposed weather days-query validation exercise is cancelled as unnecessary
@@ -27,20 +27,22 @@ real sign-in/team request endpoint. TECH-003 may complete once its remaining
 CI and publication criteria pass; AUTH-002 must verify the transferred work.
 
 ## Evidence and remaining work
-Owner implemented Problem Details, traceId, unknown-route test, /api/v1 routing,
-and the OpenAPI contract test. Owner reports all four backend tests pass after
-correcting caller URLs. Codex did not rerun tests. The weather validation
-walkthrough is superseded in docs/API_VALIDATION.md. Retain existing foundation
-coverage until real endpoints replace it. GitHub Actions, verified CI runs,
-and publication remain outstanding. The owner CI walkthrough is prepared in
-docs/CI_SETUP.md; owner created the workflow at .github/workflows/ci.yml.
-Placement and contents are reviewed locally; publication and CI execution remain
-pending. Do not close this issue.
+Owner published a77b651b655bc3301e8b77549b3c77ec179efe42. Local HEAD,
+origin/main, and live GitHub main match; working tree was clean at verification.
+[CI run 41551585014](https://github.com/Ravynnox/Calliqo/actions/runs/41551585014)
+succeeded for that exact commit on a main push. Frontend install, lint, one
+Vitest test, and production build passed. Backend restore, warning-free Release
+build, and all four tests passed (zero failed/skipped), including the isolated
+PostgreSQL persistence test. Docker verification passed. SDK 10.0.204 follows
+global.json latestPatch policy; Node 26.13.0 and npm 11.20.0 match project inputs.
+The workflow needs no application secrets or local environment files.
+No local tests were rerun by Codex; these are verified remote results.
+Real request validation remains under AUTH-002 (#10). Branch protection,
+PR-trigger execution, deployment, and second-computer retrieval are not verified
+by this successful main-push run.
 
 ## Project placement
-In Progress. Next recommended work is CI setup, with owner controlling source,
-configuration, and Git mutations.
-
+Done after reconciling issue and Project state with the verified evidence.
 ## Repository context
 - [Roadmap](https://github.com/Ravynnox/Calliqo/blob/main/docs/ROADMAP.md)
 - [Development state](https://github.com/Ravynnox/Calliqo/blob/main/docs/DEVELOPMENT_STATE.md)
@@ -51,5 +53,7 @@ owner before repository file links reflect it. Issue-body publication does not
 publish repository files.
 
 ## Completion record
-Keep open until the remaining acceptance criteria and owner-created checkpoint
-are verified. Cancelled scaffold work must not be reported as completed work.
+Implementation and associated documentation are committed/published in a77b651.
+CI succeeds for that commit. Post-run completion notes are local and should
+join the next meaningful owner checkpoint; no additional code or Git mutation
+was performed by Codex. Cancelled weather validation is not counted as done.

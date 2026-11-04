@@ -31,6 +31,8 @@ checks does not establish upstream support or all matching/API behavior.
 Revalidate when lint configuration or tooling changes. Remove the overrides
 when compatible upstream dependencies include the patch, then repeat the
 clean install, audit, build, and lint checks. No acceptance of an unresolved
-vulnerability is recorded. Baseline tests and the scaffold commit remain pending.
+vulnerability is recorded. Baseline tests and the scaffold checkpoint were
+subsequently completed/published in c06c03d. The override remains in the
+manifest and lockfile at this review; removal requires a supported upstream update.
 
 Reference: https://github.com/advisories/GHSA-g3hv-75wg-m249

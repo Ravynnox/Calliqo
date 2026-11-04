@@ -60,6 +60,14 @@ Plan protected state, secret management, environment separation,
 deployment, migrations, backups, and verified recovery.
 
 ## Observability
+OBS-001 local preparation is implemented: optional grafana/otel-lgtm:0.39.0
+Compose service, loopback Grafana/OTLP ports, and three OpenTelemetry package
+references. Owner verified startup/health and reports browser access. API
+telemetry registration, request logging, HTTP/Npgsql tracing, and opt-in OTLP
+export are implemented locally. Owner reports correlation, outage/recovery,
+and tested privacy checks passed. Publication and CI remain pending.
+This development backend does not select production telemetry hosting/storage.
+
 Built-in /health/live and database /health/ready endpoints are implemented.
 Outage/recovery checks confirm 200/503 behavior and subsequent readiness recovery.
 Instrument the API with OpenTelemetry.

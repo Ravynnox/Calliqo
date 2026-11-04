@@ -1,28 +1,17 @@
 # Testing
 
 ## Current status
-TECH-002 verification: two backend tests pass, warning-free build, clean
-NuGet audits, manual health outage/recovery, and named-volume durability.
-See PERSISTENCE_TESTS.md and PERSISTENCE_SETUP.md. Checkpoint commit is pending.
+Repository review 2026-11-02: one frontend test and six backend Fact tests are
+implemented. Owner supplied a successful Release build and six passing tests (zero failed/skipped) on 2026-11-04; OBS-001 remote CI remains pending. Published CI run 41551585014 passed all of them for a77b651,
+including frontend lint/build and warning-free backend Release build. Owner
+also reports build/four tests/audit passed after OpenTelemetry package additions.
+Codex did not rerun tests during this source/documentation review.
 
-TECH-001 checkpoint c06c03d is committed and published. All baseline checks
-below passed. Class WeatherForecastTests remains saved in UnitTest1.cs;
-renaming the file is optional cleanup, not a functional test issue.
-
-TECH-001 (#5): owner installed the frontend harness and added the test/config.
-First run failed with Invalid Chai property: toBeInTheDocument because
-src/test/setup.ts was empty. Owner saved the setup contents and subsequently
-confirmed tests pass; direct inspection confirms matcher registration and
-cleanup are present. Owner subsequently confirmed build/lint/audit after
-adding test packages pass. No test
-dependencies, configuration, or test source files have been created by Codex.
-Frontend build/lint,
-browser interaction, backend build/endpoints, and current dependency audits
-have passed as recorded in DEVELOPMENT_STATE.md. Owner supplied backend
-results: one xUnit integration test passed, solution build passed, and the
-NuGet audit reports no vulnerable packages for API or test project.
-Database and end-to-end suites come with their workflows.
-
+OBS-001 telemetry wiring and the fifth/sixth tests are now implemented locally.
+Owner reports manual telemetry checks passed; Release build/six tests also passed. Remote CI is next after publication. Playwright/device coverage belongs to later workflows. Renaming
+UnitTest1.cs is optional; its WeatherForecastTests class is valid as written.
+TECH-001 and TECH-002 walkthroughs below are historical reference, not a list
+of missed changes. Do not regenerate or overwrite working tests from them.
 ## Frontend baseline — owner walkthrough
 Objective: establish Vitest, DOM rendering, and user interaction assertions
 using the existing starter counter. This temporary scaffold test verifies
@@ -141,7 +130,7 @@ and pushes. Second-computer verification remains pending under FND-003.
 Status: implemented by the owner. One backend integration test passed;
 solution build and transitive NuGet audit passed per owner-provided output.
 The class is WeatherForecastTests but still resides in UnitTest1.cs; rename
-the file to WeatherForecastTests.cs before the checkpoint for consistency.
+the file to WeatherForecastTests.cs only as optional future cleanup.
 Use xUnit and WebApplicationFactory to test the real request pipeline and
 JSON serialization in memory. No running API process, database, Docker, or
 browser is required. Replace this temporary forecast test when the starter

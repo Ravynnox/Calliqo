@@ -1,5 +1,7 @@
 # CI setup walkthrough — TECH-003 (#7)
 
+> Review 2026-11-02: this workflow is implemented at .github/workflows/ci.yml, committed in a77b651, and passed both jobs in run 41551585014. Earlier missing-path, create-file, and pending-publication instructions below are historical. No workflow recreation or relocation is needed.
+
 ## Status and objective
 Prepared 2026-11-02 for owner implementation. Workflow now exists at the correct root path and has been reviewed;
 publication and remote CI execution remain pending. Owner approved continuing TECH-003 guidance.
@@ -217,3 +219,12 @@ before publication. No YAML execution or remote CI success is claimed.
 matches the walkthrough. Git diff --check passes. Prior misplaced-path notes
 are historical. Workflow is untracked; owner staging/publication is next.
 No remote CI result or local test rerun is claimed.
+
+## Remote result verified — 2026-11-02
+Published checkpoint a77b651b655bc3301e8b77549b3c77ec179efe42 passed both jobs
+in [run 41551585014](https://github.com/Ravynnox/Calliqo/actions/runs/41551585014).
+Frontend install/lint/test/build passed (one test). Backend Release build had
+zero warnings/errors; four tests passed, zero failed/skipped. Docker check
+passed. CI selected SDK 10.0.204 through latestPatch; Node 26.13.0 and npm
+11.20.0 were logged. Initial pending/placement notes above are historical.
+Only main-push execution is verified; no PR-trigger or branch-protection claim.

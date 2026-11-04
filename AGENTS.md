@@ -24,6 +24,9 @@ and 11-player football.
   repositories, configure remotes, merge, reset, or change/delete branches
   unless explicitly asked to perform that specific action.
 - Explain decisions, tradeoffs, commands, and validation.
+- For every task and every document, present complete actionable walkthroughs,
+  code, commands, destinations, and validation directly in chat. Documentation
+  is reference and project memory; never require the owner to discover steps there.
 - Every code snippet must identify its destination and purpose.
 - Obtain approval before proceeding to the next development task.
 - Never claim implementation, testing, or synchronization without evidence.

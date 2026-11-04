@@ -11,7 +11,9 @@ A mobile-first American football coaching web application.
 Technical foundation: React/TypeScript frontend and .NET API scaffolds are
 implemented and tested. Local PostgreSQL, EF migrations/persistence, health
 checks, and isolated integration tests are verified and published in TECH-002
-checkpoint 05e1abd. TECH-003 API conventions and CI are in progress.
+checkpoint 05e1abd. TECH-003 API conventions and CI are published in a77b651;
+both CI jobs passed. OBS-001 is in progress: local Grafana and package setup
+are complete; API telemetry wiring is still pending.
 Football features remain planned.
 
 ## Start here
@@ -26,5 +28,5 @@ Football features remain planned.
 
 Development is guided. Documentation is maintained automatically; the
 owner controls code changes and Git actions. Non-documentation changes
-require explicit authorization. Setup instructions will be added and
-verified during foundation work.
+require explicit authorization. Completed walkthroughs are reference material;
+DEVELOPMENT_STATE.md identifies the current work.
