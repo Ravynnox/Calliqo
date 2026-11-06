@@ -227,3 +227,9 @@ criteria and the owner-created code/documentation commit are verified.
 Add a unit-test project when isolated business logic exists; avoid empty tests.
 
 Reference: https://learn.microsoft.com/en-us/aspnet/core/test/integration-tests?view=aspnetcore-10.0
+
+## Latest published verification — 2026-11-06
+OBS-001 checkpoint faddf7d passed both jobs in CI run 41898883349: one frontend
+test and six backend tests, zero failed/skipped, zero backend warnings/errors.
+Earlier pending-OBS-CI notes above are historical. Runtime telemetry manual
+checks remain owner-reported rather than independently executed by Codex.

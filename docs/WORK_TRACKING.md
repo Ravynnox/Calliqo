@@ -1,15 +1,15 @@
 # GitHub Work Tracking
 
 ## Current status
-- Current task: [OBS-001 — Baseline telemetry](https://github.com/Ravynnox/Calliqo/issues/8).
+- Current task: AUTH-001 (#9), approved to start; provider/design accepted; decision publication pending. Last completed: OBS-001 (#8).
 - Owner authorized setup before version pinning; authenticated GitHub CLI as Ravynnox.
 - Repository: https://github.com/Ravynnox/Calliqo
 - Private Project: [Calliqo Development](https://github.com/users/Ravynnox/projects/2), linked to the repository.
 - Workflow board created with Backlog, Ready, In Progress, and Done statuses.
 - Published 24 real GitHub issues after confirming no existing repository issues.
 - Local body snapshots live under docs/work-items/; task/issue mapping is below.
-- All 24 memberships are verified. FND-004 is now closed/Done, giving
-  6 Done, 2 In Progress, and 16 Backlog items after starting OBS-001; 18 issues remain open.
+- All 24 roadmap issues have established Project memberships. OBS-001 (#8)
+  closure and Project Done were verified on 2026-11-06 after successful CI.
 - Workflow BOARD_LAYOUT and Status column grouping were verified through
   verticalGroupByFields. groupByFields alone does not report board columns.
 - GitHub connector/plugin discovery were unavailable; authenticated GitHub CLI is the verified fallback.
@@ -45,7 +45,7 @@ Use a Board view grouped by Status:
 
 FND-001, FND-002, FND-004, TECH-001, TECH-002, and TECH-003 are Done.
 FND-003 remains In Progress with second-computer verification deferred.
-OBS-001 is In Progress; the other 16 future tasks remain in Backlog.
+OBS-001 is Done. AUTH-001 is In Progress following owner task approval.
 Use a note in the issue body for waiting work; no additional custom field is
 required initially.
 
@@ -145,8 +145,8 @@ need not be rewritten into a new self-referential commit after each commit.
 | TECH-001 | [Application scaffolds](work-items/TECH-001.md) | Complete | [#5](https://github.com/Ravynnox/Calliqo/issues/5) |
 | TECH-002 | [API/database connection](work-items/TECH-002.md) | Complete | [#6](https://github.com/Ravynnox/Calliqo/issues/6) |
 | TECH-003 | [API conventions and CI](work-items/TECH-003.md) | Complete | [#7](https://github.com/Ravynnox/Calliqo/issues/7) |
-| OBS-001 | [Baseline telemetry](work-items/OBS-001.md) | In progress | [#8](https://github.com/Ravynnox/Calliqo/issues/8) |
-| AUTH-001 | [Identity decision](work-items/AUTH-001.md) | Planned | [#9](https://github.com/Ravynnox/Calliqo/issues/9) |
+| OBS-001 | [Baseline telemetry](work-items/OBS-001.md) | Complete | [#8](https://github.com/Ravynnox/Calliqo/issues/8) |
+| AUTH-001 | [Identity decision](work-items/AUTH-001.md) | In progress | [#9](https://github.com/Ravynnox/Calliqo/issues/9) |
 | AUTH-002 | [Sign-in and teams](work-items/AUTH-002.md) | Planned | [#10](https://github.com/Ravynnox/Calliqo/issues/10) |
 | AUTH-003 | [Team isolation](work-items/AUTH-003.md) | Planned | [#11](https://github.com/Ravynnox/Calliqo/issues/11) |
 | DOM-001 | [Football domain](work-items/DOM-001.md) | Planned | [#12](https://github.com/Ravynnox/Calliqo/issues/12) |

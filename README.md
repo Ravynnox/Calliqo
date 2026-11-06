@@ -12,8 +12,10 @@ Technical foundation: React/TypeScript frontend and .NET API scaffolds are
 implemented and tested. Local PostgreSQL, EF migrations/persistence, health
 checks, and isolated integration tests are verified and published in TECH-002
 checkpoint 05e1abd. TECH-003 API conventions and CI are published in a77b651;
-both CI jobs passed. OBS-001 is in progress: local Grafana and package setup
-are complete; API telemetry wiring is still pending.
+both CI jobs passed. OBS-001 telemetry is published in faddf7d, with successful
+CI, six backend tests, and owner-verified local Grafana/failure-recovery checks.
+AUTH-001 selects Auth0 with backend OIDC and browser cookies; the owner has
+accepted the decision. Documentation publication and AUTH-002 implementation follow.
 Football features remain planned.
 
 ## Start here

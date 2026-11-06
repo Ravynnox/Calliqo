@@ -12,8 +12,8 @@ Complete requires verified acceptance criteria and committed documentation.
 | TECH-001 Application scaffolds | FND-003 (second-computer verification pending; local setup proceeding) | Frontend/backend build and baseline checks pass | Complete | [#5](https://github.com/Ravynnox/Calliqo/issues/5) |
 | TECH-002 API/database connection | TECH-001 | Compose startup, migrations, health and persistence verified | Complete | [#6](https://github.com/Ravynnox/Calliqo/issues/6) |
 | TECH-003 API conventions and CI | TECH-002 | Versioned API, OpenAPI, errors and CI checks; request-validation demonstration transferred to AUTH-002 | Complete | [#7](https://github.com/Ravynnox/Calliqo/issues/7) |
-| OBS-001 Baseline telemetry | TECH-003 | Correlated request logs, metrics and traces verified | In progress | [#8](https://github.com/Ravynnox/Calliqo/issues/8) |
-| AUTH-001 Identity decision | FND-001 | Accepted identity ADR | Planned | [#9](https://github.com/Ravynnox/Calliqo/issues/9) |
+| OBS-001 Baseline telemetry | TECH-003 | Correlated request logs, metrics and traces verified | Complete | [#8](https://github.com/Ravynnox/Calliqo/issues/8) |
+| AUTH-001 Identity decision | FND-001 | Accepted identity ADR | In progress | [#9](https://github.com/Ravynnox/Calliqo/issues/9) |
 | AUTH-002 Sign-in and teams | AUTH-001, TECH-003 | Memberships, permissions and initial entitlements work; real request validation and error contracts tested | Planned | [#10](https://github.com/Ravynnox/Calliqo/issues/10) |
 | AUTH-003 Team isolation | AUTH-002 | Unauthorized reads, writes and relationships rejected | Planned | [#11](https://github.com/Ravynnox/Calliqo/issues/11) |
 | DOM-001 Football domain | AUTH-003 | Formats, rules, seasons and rosters validated | Planned | [#12](https://github.com/Ravynnox/Calliqo/issues/12) |
@@ -58,3 +58,19 @@ proposed task and requires owner approval.
 Owner approved OBS-001 on 2026-11-02. First checkpoint is local LGTM startup
 from docs/OBSERVABILITY_SETUP.md; instrumentation/export verification remains
 pending. No implementation is claimed by the prepared walkthrough.
+
+## Latest verified checkpoint — 2026-11-06
+OBS-001 is complete at published faddf7db0f72b49432fe872594142c640411a48e.
+[CI run 41898883349](https://github.com/Ravynnox/Calliqo/actions/runs/41898883349)
+passed both jobs: one frontend test, six backend tests, zero backend build
+warnings/errors. Owner reported manual telemetry/failure/recovery/privacy
+checks passed. Earlier startup/pending notes above are historical.
+FND-003 remains deferred; AUTH-001 is the current task.
+
+AUTH-001 started with owner approval on 2026-11-06. Managed sign-in and public
+coach signup are owner preferences. Provider/design approval is recorded below;
+decision publication remains pending.
+
+AUTH-001 decision accepted on 2026-11-06: Auth0 Universal Login, backend OIDC
+with secure app cookies and app-owned team authorization. ADR-002 is accepted;
+owner publication remains before completion. AUTH-002 is not started.

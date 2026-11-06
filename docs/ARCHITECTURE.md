@@ -42,10 +42,16 @@ Corrections retain history.
 Statistics derive from effective event revisions.
 
 ## Authentication
-Evaluate ASP.NET Core Identity and an established OpenID Connect provider.
-Secure browser sessions and CSRF protection are required if cookies are used.
-External API authentication will use appropriate standards when introduced.
-
+Owner accepted ADR-002 on 2026-11-06: Auth0 Universal Login with backend OIDC
+Authorization Code + PKCE, secure HttpOnly app cookies, and CSRF protection.
+Initial app sessions have an eight-hour absolute lifetime. Provider credentials
+and upstream tokens remain server-side. Public signup permits verified coaches
+to create organizations/teams; membership and permissions remain app-owned in
+PostgreSQL, enforced server-side. Identity uses a stable internal user ID linked
+to issuer + subject rather than mutable email. See decisions/ADR-002-identity.md.
+This is an accepted design, not implemented auth functionality. AUTH-002 follows
+after AUTH-001 decision publication and separate task approval. Production plan,
+email/MFA/environment capabilities and cost fit remain explicit gates.
 ## Cloud and infrastructure
 TECH-002 implements local PostgreSQL 18.6 in Docker Compose with host-run
 frontend/API, loopback database access, and a named data volume. Startup,
@@ -65,7 +71,8 @@ Compose service, loopback Grafana/OTLP ports, and three OpenTelemetry package
 references. Owner verified startup/health and reports browser access. API
 telemetry registration, request logging, HTTP/Npgsql tracing, and opt-in OTLP
 export are implemented locally. Owner reports correlation, outage/recovery,
-and tested privacy checks passed. Publication and CI remain pending.
+and tested privacy checks passed. Published faddf7d passed CI with six backend
+tests; OBS-001 is complete.
 This development backend does not select production telemetry hosting/storage.
 
 Built-in /health/live and database /health/ready endpoints are implemented.

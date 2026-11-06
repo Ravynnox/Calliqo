@@ -36,3 +36,13 @@ subsequently completed/published in c06c03d. The override remains in the
 manifest and lockfile at this review; removal requires a supported upstream update.
 
 Reference: https://github.com/advisories/GHSA-g3hv-75wg-m249
+
+## ADR-002 — Managed identity and browser sessions
+- Date: 2026-11-06.
+- Status: Accepted by owner; documentation publication pending under AUTH-001 (#9).
+- Selected: Auth0 Universal Login through backend OIDC Code + PKCE, secure app
+  cookies, app-owned memberships/permissions, public coach signup, verified-email
+  organization/team creation, and initial eight-hour absolute application sessions.
+- [Accepted decision](decisions/ADR-002-identity.md) compares alternatives and
+  records recovery, invitations, future MFA, privacy, cost and production gates.
+- AUTH-002 implementation is not started. No provider tenant or paid plan created.
